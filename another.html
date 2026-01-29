@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Jasa Buat Akun AnotherCrash</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: #f0f0f0;
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Container Utama */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            width: 100%;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(157, 0, 255, 0.5);
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: linear-gradient(90deg, #9d00ff, #ff00ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(157, 0, 255, 0.4);
+            letter-spacing: 1.5px;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: #aaa;
+            font-weight: 300;
+        }
+
+        /* Note Pembayaran */
+        .payment-note {
+            background: linear-gradient(135deg, rgba(255, 100, 100, 0.12), rgba(255, 50, 50, 0.08));
+            border: 1px solid rgba(255, 80, 80, 0.5);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .note-icon {
+            color: #ff6b6b;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .note-content {
+            flex: 1;
+        }
+
+        .note-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ff9e9e;
+            margin-bottom: 5px;
+        }
+
+        .note-text {
+            font-size: 0.9rem;
+            color: #ffd6d6;
+            line-height: 1.4;
+        }
+
+        /* Form Section */
+        .form-section {
+            background: rgba(20, 20, 30, 0.8);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(157, 0, 255, 0.3);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: #9d00ff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title i {
+            font-size: 1.3rem;
+        }
+
+        /* Pilih Masa Aktif */
+        .duration-selection {
+            margin-bottom: 30px;
+        }
+
+        .duration-label {
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 12px;
+            color: #ccc;
+            font-weight: 500;
+        }
+
+        .duration-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .duration-btn {
+            background: rgba(40, 40, 60, 0.8);
+            border: 1.5px solid transparent;
+            border-radius: 10px;
+            padding: 15px 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            min-height: 70px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .duration-btn:hover {
+            background: rgba(60, 60, 80, 0.9);
+        }
+
+        .duration-btn.active {
+            border-color: #9d00ff;
+            background: rgba(157, 0, 255, 0.12);
+            box-shadow: 0 3px 10px rgba(157, 0, 255, 0.2);
+        }
+
+        .duration-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: #fff;
+        }
+
+        .duration-price {
+            font-size: 1rem;
+            color: #9d00ff;
+            font-weight: 700;
+        }
+
+        /* Form Input */
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1rem;
+            color: #ddd;
+            font-weight: 500;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(10, 10, 15, 0.9);
+            border: 1.5px solid rgba(157, 0, 255, 0.4);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            -webkit-appearance: none;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #9d00ff;
+            box-shadow: 0 0 8px rgba(157, 0, 255, 0.4);
+        }
+
+        .input-hint {
+            margin-top: 6px;
+            color: #888;
+            font-size: 0.8rem;
+            font-style: italic;
+        }
+
+        /* Tombol Pesan */
+        .order-btn-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .order-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: linear-gradient(90deg, #9d00ff, #ff00ff);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 16px 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 5px 15px rgba(157, 0, 255, 0.3);
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .order-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(157, 0, 255, 0.4);
+        }
+
+        .order-btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* Info Kontak */
+        .contact-info {
+            background: rgba(20, 20, 30, 0.8);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(157, 0, 255, 0.2);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .contact-item {
+            background: rgba(40, 40, 60, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .whatsapp-icon {
+            color: #25D366;
+        }
+
+        .telegram-icon {
+            color: #0088cc;
+        }
+
+        .contact-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .contact-detail {
+            color: #aaa;
+            font-size: 0.85rem;
+            word-break: break-all;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid rgba(157, 0, 255, 0.2);
+            color: #666;
+            font-size: 0.8rem;
+            margin-top: 30px;
+        }
+
+        .footer-info {
+            margin-bottom: 5px;
+        }
+
+        /* Overlay Konfirmasi */
+        .confirm-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5, 5, 10, 0.95);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .confirm-content {
+            background: rgba(25, 25, 40, 0.95);
+            border-radius: 16px;
+            padding: 25px;
+            width: 100%;
+            max-width: 500px;
+            border: 2px solid rgba(157, 0, 255, 0.5);
+            box-shadow: 0 5px 30px rgba(157, 0, 255, 0.3);
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .confirm-title {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            color: #9d00ff;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .confirm-note {
+            background: rgba(255, 100, 100, 0.12);
+            border: 1px solid rgba(255, 80, 80, 0.4);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .confirm-note i {
+            color: #ff6b6b;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .confirm-note-text {
+            color: #ffd6d6;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        /* Struk dalam Overlay */
+        .receipt-details {
+            background: rgba(15, 15, 25, 0.9);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .receipt-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .receipt-item:last-child {
+            border-bottom: none;
+        }
+
+        .receipt-label {
+            color: #bbb;
+            font-size: 0.95rem;
+        }
+
+        .receipt-value {
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-align: right;
+        }
+
+        .receipt-total {
+            color: #9d00ff;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        /* Tombol Aksi dalam Overlay */
+        .confirm-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .confirm-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 10px;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            min-height: 50px;
+        }
+
+        .cancel-btn {
+            background: rgba(80, 80, 100, 0.8);
+            color: white;
+        }
+
+        .whatsapp-btn {
+            background: linear-gradient(90deg, #25D366, #128C7E);
+            color: white;
+        }
+
+        .telegram-btn {
+            background: linear-gradient(90deg, #0088cc, #005f8d);
+            color: white;
+        }
+
+        .confirm-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsif untuk Android */
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 0.9rem;
+            }
+            
+            .form-section {
+                padding: 20px;
+            }
+            
+            .duration-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .duration-btn {
+                padding: 15px;
+                min-height: 65px;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .confirm-buttons {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+            
+            .order-btn {
+                max-width: 100%;
+                padding: 16px 20px;
+            }
+            
+            .input-field {
+                padding: 12px 14px;
+            }
+        }
+
+        @media (min-width: 481px) and (max-width: 768px) {
+            .duration-buttons {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Animasi */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Touch-friendly improvements */
+        button, .duration-btn, .confirm-btn {
+            -webkit-tap-highlight-color: rgba(157, 0, 255, 0.3);
+            touch-action: manipulation;
+        }
+
+        .input-field {
+            font-size: 16px; /* Mencegah zoom di iOS */
+        }
+/* TOMBOL KONTAK MENYAMPING DENGAN BACKGROUND HITAM SEPERTI SEBELUMNYA */
+.contact-grid {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.contact-btn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-height: 70px;
+    background: rgba(30, 30, 40, 0.8);
+}
+
+.whatsapp-btn:hover {
+    background: rgba(37, 211, 102, 0.2);
+    border-color: rgba(37, 211, 102, 0.5);
+}
+
+.telegram-btn:hover {
+    background: rgba(0, 136, 204, 0.2);
+    border-color: rgba(0, 136, 204, 0.5);
+}
+
+.contact-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.contact-icon {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.whatsapp-btn .contact-icon {
+    color: #25D366;
+}
+
+.telegram-btn .contact-icon {
+    color: #0088cc;
+}
+
+.contact-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 3px;
+    color: #fff;
+}
+
+.contact-detail {
+    font-size: 0.75rem;
+    color: #aaa;
+    text-align: center;
+    word-break: break-all;
+}
+    </style>
+</head>
+<body>
+    <!-- Konten Utama -->
+    <div class="container">
+        <header>
+            <h1 class="logo">ANOTHERCRASH</h1>
+            <p class="subtitle">Jasa Pembuatan Akun AnotherCrash</p>
+        </header>
+        
+        <!-- Note Pembayaran -->
+        <div class="payment-note">
+            <div class="note-icon">
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <div class="note-content">
+                <h3 class="note-title">LAYANAN BERBAYAR</h3>
+                <p class="note-text">Jasa pembuatan akun ini berbayar. Semua transaksi akan diproses dengan profesional dan akun dibuat sesuai permintaan Anda.</p>
+            </div>
+        </div>
+        
+        <!-- Form Pemesanan -->
+        <div class="form-section">
+            <h3 class="section-title">
+                <i class="fas fa-user-plus"></i> Form Pemesanan Akun
+            </h3>
+            
+            <!-- Pilih Masa Aktif -->
+            <div class="duration-selection">
+                <span class="duration-label">Pilih Masa Aktif:</span>
+                <div class="duration-buttons">
+                    <div class="duration-btn active" data-duration="1 Minggu" data-price="2000">
+                        <div class="duration-name">1 Minggu</div>
+                        <div class="duration-price">Rp 2.000</div>
+                    </div>
+                    <div class="duration-btn" data-duration="1 Bulan" data-price="5000">
+                        <div class="duration-name">1 Bulan</div>
+                        <div class="duration-price">Rp 5.000</div>
+                    </div>
+                    <div class="duration-btn" data-duration="1 Tahun" data-price="10000">
+                        <div class="duration-name">1 Tahun</div>
+                        <div class="duration-price">Rp 10.000</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Input Username -->
+            <div class="input-group">
+                <label for="username">Req Username:</label>
+                <input type="text" id="username" class="input-field" placeholder="Contoh: player123, gamer_pro" autocomplete="off">
+                <div class="input-hint">Huruf kecil saja, tanpa spasi</div>
+            </div>
+            
+            <!-- Input Password -->
+            <div class="input-group">
+                <label for="password">Req Password:</label>
+                <input type="text" id="password" class="input-field" placeholder="Minimal 3 karakter" autocomplete="off">
+                <div class="input-hint">Minimal 3 digit, kombinasi huruf/angka</div>
+            </div>
+        </div>
+        
+        <!-- Tombol Pesan -->
+        <div class="order-btn-container">
+            <button class="order-btn" id="orderBtn">
+                <i class="fas fa-shopping-cart"></i> PESAN AKUN SEKARANG
+            </button>
+        </div>
+        
+        <!-- Info Kontak -->
+        <div class="contact-info">
+            <h3 class="section-title">
+                <i class="fas fa-headset"></i> Hubungi Kami
+            </h3>
+            <p style="font-size: 0.9rem; color: #bbb; line-height: 1.4; margin-bottom: 15px;">
+                Untuk pertanyaan atau konfirmasi, hubungi kami melalui:
+            </p>
+<!-- EDIT HTML: GANTI DARI DIV KE BUTTON -->
+<div class="contact-grid">
+    <button class="contact-btn whatsapp-btn" id="whatsappContactBtn">
+        <div class="contact-icon">
+            <i class="fab fa-whatsapp"></i>
+        </div>
+        <div class="contact-info">
+            <div class="contact-name">WhatsApp</div>
+            <div class="contact-detail">6283151568511</div>
+        </div>
+    </button>
+    <button class="contact-btn telegram-btn" id="telegramContactBtn">
+        <div class="contact-icon">
+            <i class="fab fa-telegram"></i>
+        </div>
+        <div class="contact-info">
+            <div class="contact-name">Telegram</div>
+            <div class="contact-detail">@Drayoffc</div>
+        </div>
+    </button>
+</div>
+        </div>
+        
+        <!-- Footer -->
+        <footer>
+            <div class="footer-info">Website: AnotherCrash | Developer: DrayXD | Since 2024 - 2026</div>
+            <div>© 2024 - 2026 AnotherCrash. All rights reserved.</div>
+        </footer>
+    </div>
+    
+    <!-- Overlay Konfirmasi -->
+    <div class="confirm-overlay" id="confirmOverlay">
+        <div class="confirm-content" id="confirmContent">
+            <h3 class="confirm-title">
+                <i class="fas fa-file-invoice-dollar"></i> Konfirmasi Pemesanan
+            </h3>
+            
+            <div class="confirm-note">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p class="confirm-note-text">
+                    <strong>Perhatian:</strong> Pastikan data yang Anda masukkan sudah benar sebelum melanjutkan.
+                </p>
+            </div>
+            
+            <!-- Struk Pemesanan -->
+            <div class="receipt-details">
+                <div class="receipt-item">
+                    <span class="receipt-label">Masa Aktif</span>
+                    <span class="receipt-value" id="receiptDuration">1 Minggu</span>
+                </div>
+                <div class="receipt-item">
+                    <span class="receipt-label">Username</span>
+                    <span class="receipt-value" id="receiptUsername">player123</span>
+                </div>
+                <div class="receipt-item">
+                    <span class="receipt-label">Password</span>
+                    <span class="receipt-value" id="receiptPassword">•••••</span>
+                </div>
+                <div class="receipt-item">
+                    <span class="receipt-label">Harga</span>
+                    <span class="receipt-value receipt-total" id="receiptPrice">Rp 2.000</span>
+                </div>
+            </div>
+            
+            <!-- Tombol Aksi -->
+            <div class="confirm-buttons">
+                <button class="confirm-btn cancel-btn" id="cancelBtn">
+                    <i class="fas fa-times"></i> Batalkan
+                </button>
+                <button class="confirm-btn whatsapp-btn" id="confirmWhatsappBtn">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </button>
+                <button class="confirm-btn telegram-btn" id="confirmTelegramBtn">
+                    <i class="fab fa-telegram"></i> Telegram
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Variabel global
+        let selectedDuration = '1 Minggu';
+        let selectedPrice = 2000;
+        let username = '';
+        let password = '';
+        
+        // Inisialisasi untuk Android
+        document.addEventListener('DOMContentLoaded', function() {
+            // Cegah zoom pada input field di iOS
+            document.querySelectorAll('.input-field').forEach(input => {
+                input.addEventListener('touchstart', function() {
+                    this.style.fontSize = '16px';
+                });
+            });
+            
+            // Animasi awal
+            document.querySelector('header').style.animation = 'slideUp 0.5s ease forwards';
+            setTimeout(() => {
+                document.querySelector('.payment-note').style.animation = 'fadeIn 0.5s ease forwards';
+            }, 200);
+            setTimeout(() => {
+                document.querySelector('.form-section').style.animation = 'slideUp 0.5s ease forwards';
+            }, 400);
+        });
+        
+        // Fungsi untuk update struk di overlay
+        function updateReceipt() {
+            document.getElementById('receiptDuration').textContent = selectedDuration;
+            document.getElementById('receiptUsername').textContent = username || '(belum diisi)';
+            document.getElementById('receiptPassword').textContent = password ? '•••••' : '(belum diisi)';
+            document.getElementById('receiptPrice').textContent = `Rp ${selectedPrice.toLocaleString('id-ID')}`;
+        }
+        
+        // Fungsi untuk generate pesan WhatsApp/Telegram
+        function generateOrderMessage() {
+            return `Halo, saya ingin memesan pembuatan akun AnotherCrash%0A%0A` +
+                   `Detail Pemesanan:%0A` +
+                   `• Masa Aktif: ${selectedDuration}%0A` +
+                   `• Username: ${username || '(belum diisi)'}%0A` +
+                   `• Password: ${password || '(belum diisi)'}%0A` +
+                   `• Total Harga: Rp ${selectedPrice.toLocaleString('id-ID')}%0A%0A` +
+                   `Saya setuju dengan harga yang tertera dan ingin melanjutkan pemesanan.`;
+        }
+        
+        // Event Listeners untuk pilih masa aktif
+        document.querySelectorAll('.duration-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Hapus class active dari semua tombol
+                document.querySelectorAll('.duration-btn').forEach(b => {
+                    b.classList.remove('active');
+                });
+                
+                // Tambah class active ke tombol yang diklik
+                this.classList.add('active');
+                
+                // Update variabel
+                selectedDuration = this.getAttribute('data-duration');
+                selectedPrice = parseInt(this.getAttribute('data-price'));
+            });
+            
+            // Efek hover untuk touch devices
+            btn.addEventListener('touchstart', function() {
+                this.style.opacity = '0.8';
+            });
+            
+            btn.addEventListener('touchend', function() {
+                this.style.opacity = '1';
+            });
+        });
+        
+        // Event Listener untuk input username
+        const usernameInput = document.getElementById('username');
+        usernameInput.addEventListener('input', function() {
+            // Konversi ke huruf kecil
+            this.value = this.value.toLowerCase();
+            username = this.value;
+        });
+        
+        // Event Listener untuk input password
+        const passwordInput = document.getElementById('password');
+        passwordInput.addEventListener('input', function() {
+            password = this.value;
+        });
+        
+        // Event Listener untuk tombol pesan
+        document.getElementById('orderBtn').addEventListener('click', function() {
+            // Validasi input
+            username = usernameInput.value.trim();
+            password = passwordInput.value.trim();
+            
+            if (!username) {
+                alert('Silakan masukkan username yang diinginkan!');
+                usernameInput.focus();
+                return;
+            }
+            
+            if (!password || password.length < 3) {
+                alert('Silakan masukkan password minimal 3 karakter!');
+                passwordInput.focus();
+                return;
+            }
+            
+            // Update struk
+            updateReceipt();
+            
+            // Tampilkan overlay konfirmasi
+            const overlay = document.getElementById('confirmOverlay');
+            const content = document.getElementById('confirmContent');
+            
+            overlay.style.display = 'flex';
+            
+            // Animasi masuk
+            setTimeout(() => {
+                overlay.style.opacity = '1';
+                content.style.transform = 'translateY(0)';
+            }, 10);
+            
+            // Scroll ke atas overlay
+            overlay.scrollTop = 0;
+        });
+        
+        // Event Listener untuk tombol batalkan di overlay
+        document.getElementById('cancelBtn').addEventListener('click', function() {
+            closeConfirmOverlay();
+        });
+        
+        // Event Listener untuk tombol WhatsApp di overlay
+        document.getElementById('confirmWhatsappBtn').addEventListener('click', function() {
+            const message = generateOrderMessage();
+            window.open(`https://wa.me/6283151568511?text=${message}`, '_blank');
+        });
+        
+        // Event Listener untuk tombol Telegram di overlay
+        document.getElementById('confirmTelegramBtn').addEventListener('click', function() {
+            const message = generateOrderMessage();
+            window.open(`https://t.me/Drayoffc?text=${message}`, '_blank');
+        });
+        
+        // Fungsi untuk menutup overlay konfirmasi
+        function closeConfirmOverlay() {
+            const overlay = document.getElementById('confirmOverlay');
+            const content = document.getElementById('confirmContent');
+            
+            // Animasi keluar
+            overlay.style.opacity = '0';
+            content.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                overlay.style.display = 'none';
+            }, 300);
+        }
+        
+        // Tutup overlay dengan klik di luar konten
+        document.getElementById('confirmOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeConfirmOverlay();
+            }
+        });
+        
+        // Tutup overlay dengan tombol escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeConfirmOverlay();
+            }
+        });
+        
+        // Efek visual untuk input field
+        document.querySelectorAll('.input-field').forEach(field => {
+            field.addEventListener('focus', function() {
+                this.style.boxShadow = '0 0 8px rgba(157, 0, 255, 0.5)';
+            });
+            
+            field.addEventListener('blur', function() {
+                this.style.boxShadow = '';
+            });
+        });
+        
+        // Animasi untuk semua section
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -20px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        /* TAMBAH JAVASCRIPT UNTUK TOMBOL KONTAK */
+// Event Listener untuk tombol WhatsApp kontak
+document.getElementById('whatsappContactBtn').addEventListener('click', function() {
+    window.open(`https://wa.me/6283151568511`, '_blank');
+});
+
+// Event Listener untuk tombol Telegram kontak
+document.getElementById('telegramContactBtn').addEventListener('click', function() {
+    window.open(`https://t.me/Drayoffc`, '_blank');
+});
+        // Terapkan animasi pada elemen
+        document.querySelectorAll('.form-section, .contact-info, .order-btn-container').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(15px)';
+            el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
